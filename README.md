@@ -26,6 +26,5 @@ csv file example:
 
 header1,header2,header3
 
-
 value1,value2,value3
 
