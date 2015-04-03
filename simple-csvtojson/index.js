@@ -25,14 +25,19 @@ function csvJSON(csv){
   }
   
   //return result; //JavaScript object
-  return JSON.stringify(result); //JSON
+  return JSON.stringify(result, null, 4); //JSON
 }
-module.exports = function(filepath){
+module.exports = function(filepath, outputfilepath){
 var fs = require('fs');
+var Data ='';
 fs.readFile(filepath, 'utf8', function (err,data) {
      if (err) {
             return console.log(err);
-              }
-     console.log(csvJSON(data));
+     }
+     fs.writeFile(outputfilepath,csvJSON(data),'utf8', function(err,data){
+         if (err) {
+            return console.log(err);
+         } 
+      });
 });
-}
+};
